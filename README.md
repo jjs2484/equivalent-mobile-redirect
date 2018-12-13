@@ -55,7 +55,7 @@ $emr_page_link = wp_make_link_relative(get_permalink( $post->ID ));
 echo '<link rel="alternate" media="only screen and (max-width: 640px)" href="http://m.example.com' . $emr_page_link . '">';
 };
 </code>
-
+<br>
 <code>
 /* Add to mobile site theme functions.php and make sure to replace domain name */
 add_action('wp_head', 'emr_mobile_head_tag');
@@ -67,6 +67,7 @@ echo '<link rel="canonical" href="http://example.com' . $emr_page_link . '">';
 </code>
 
 = Known limitations =
+
 * Some touchscreen devices (eg. Microsoft Surface) are tough to detect as mobile since they can be used in a laptop mode.
 * If the mobile browser is set on Desktop mode, the Mobile Detect script has no way of knowing that the device is mobile.
 * There are hundreds of devices launched every month, we cannot keep a 100% up to date detection rate.
