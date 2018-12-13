@@ -4,7 +4,7 @@ Contributors: uniquelylost
 Tags: mobile redirect, mobile detect, equivalent, mobile, redirection
 Requires at least: 3.0
 Tested up to: 5.0
-Stable tag: 4.2
+Stable tag: 4.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 

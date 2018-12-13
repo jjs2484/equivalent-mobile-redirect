@@ -4,7 +4,7 @@ Easy way to detect and redirect mobile visitors to the equivalent page on your m
 
 == Description ==
 
-This WordPress plugin will detect mobile devices and redirect the user to the equivalent mobile page as set in the metabox that is added to your page and post screens upon activation. You can optionally override equivalent redirects and instead redirect all mobile users to one URL. The plugin also gives you the ability to allow mobile visitors to bypass the mobile redirect and "View Full Site" by using a link on your mobile site. To use this feature add a link like "http://example.com/?view_full_site=true" anywhere on your mobile site.
+This WordPress plugin will detect mobile devices and redirect the user to the equivalent mobile page as set in the metabox that is added to your page and post screens upon activation. You can optionally override equivalent redirects and instead redirect all mobile users to one URL.
 
 = Features =
 * Unlimited possible page/post redirects
@@ -14,7 +14,7 @@ This WordPress plugin will detect mobile devices and redirect the user to the eq
 * Option to redirect tablets as mobile or not
 * Comprehensive mobile detection library
 * Google recommended 302 redirects for mobile
-* Option to let mobile visitors "View Full Site"
+* Option to let mobile visitors "View Full Site". To use this feature add a link like "http://example.com/?view_full_site=true" anywhere on your mobile site.
 * Built in support for custom post types
 
 = Configuring cache plugins for Equivalent Mobile Redirect =
@@ -39,6 +39,32 @@ In the settings you will need to disable caching for the following User Agents:
 * SCH-I800
 * Nexus 7
 * Touch
+
+= Annotations for desktop and mobile URLs =
+
+To help search engines understand separate mobile URLs tags can be added to the pages to tell crawlers about it. The plugin doesn’t automatically do this on its own right now. For a more in-depth explaination of annotations please see <a href="https://developers.google.com/search/mobile-sites/mobile-seo/separate-urls">Google developers</a>
+
+For example if your page slugs exactly match between the desktop and mobile sites you could use the snippets below to generate the tags but make sure to replace the example.com in the code with your domains before using it.
+
+<code>
+/* Add to desktop site theme functions.php and make sure to replace domain name */
+add_action('wp_head', 'emr_desktop_head_tag');
+function emr_desktop_head_tag(){
+global $post;
+$emr_page_link = wp_make_link_relative(get_permalink( $post->ID ));
+echo '<link rel="alternate" media="only screen and (max-width: 640px)" href="http://m.example.com' . $emr_page_link . '">';
+};
+</code>
+
+<code>
+/* Add to mobile site theme functions.php and make sure to replace domain name */
+add_action('wp_head', 'emr_mobile_head_tag');
+function emr_mobile_head_tag(){
+global $post;
+$emr_page_link = wp_make_link_relative(get_permalink( $post->ID ));
+echo '<link rel="canonical" href="http://example.com' . $emr_page_link . '">';
+};
+</code>
 
 = Known limitations =
 * Some touchscreen devices (eg. Microsoft Surface) are tough to detect as mobile since they can be used in a laptop mode.
