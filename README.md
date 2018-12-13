@@ -47,6 +47,7 @@ To help search engines understand separate mobile URLs tags can be added to the 
 For example if your page slugs exactly match between the desktop and mobile sites you could use the snippets below to generate the tags but make sure to replace the example.com in the code with your domains before using it.
 
 /* Add to desktop site theme functions.php and make sure to replace domain name */
+
 <code>
 add_action('wp_head', 'emr_desktop_head_tag');
 function emr_desktop_head_tag(){
@@ -57,6 +58,7 @@ echo '<link rel="alternate" media="only screen and (max-width: 640px)" href="htt
 </code>
 
 /* Add to mobile site theme functions.php and make sure to replace domain name */
+
 <code>
 add_action('wp_head', 'emr_mobile_head_tag');
 function emr_mobile_head_tag(){
