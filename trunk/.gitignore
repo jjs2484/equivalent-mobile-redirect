@@ -1,0 +1,10 @@
+# Grunt
+/node_modules/
+npm-debug.log
+
+# Composer
+composer.phar
+/vendor/
+
+# macOS
+.DS_Store

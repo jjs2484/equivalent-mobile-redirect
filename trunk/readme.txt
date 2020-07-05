@@ -3,8 +3,8 @@
 Contributors: uniquelylost
 Tags: mobile redirect, mobile detect, equivalent, mobile, redirection
 Requires at least: 3.0
-Tested up to: 5.0
-Stable tag: 4.2
+Tested up to: 5.4.2
+Stable tag: 4.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -103,13 +103,21 @@ If you want to use this feature set a link to "http://example.com/?view_full_sit
 2. Admin page options
 
 == Changelog ==
-= 4.2 release =
+
+= 4.4 release =
+* New: Added PHPCS
+* New: Code refactoring
+* Updated: to mobile detect @version 2.8.34
+* Tested: compatibility with WordPress 5.4.2
+* Tested: Cross tested device detection and redirects with BrowserStack
+
+= 4.2 =
 * Added: on or off option on settings page.
 * Added: back to full website link example on settings page.
 * Updated: readme
 * Tested: compatibility with WordPress 5.0
 
-= 4.1 release =
+= 4.1 =
 * Code: refactoring
 * Code: renamed options page settings and variables. Old settings are remapped upon upgrade for backwards compatibility.
 * Fixed: all php notices and warnings that occured with debug mode enabled
