@@ -18,4 +18,4 @@ defined( 'ABSPATH' ) || exit;
 require_once 'includes/emr-options.php';
 
 // Equivalent mobile redirect class.
-require_once 'class-emr.php';
+require_once 'includes/class-emr.php';
