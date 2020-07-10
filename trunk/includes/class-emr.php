@@ -39,6 +39,9 @@ class EMR {
 		add_action( 'init', array( $this, 'init' ), 20 );
 
 		add_action( 'plugins_loaded', array( $this, 'activate' ) );
+
+		// Desktop link rel="alternate" annotations.
+		add_action('wp_head', 'desktop_alt_tag');
 	}
 
 	/**
@@ -286,6 +289,52 @@ class EMR {
 					}
 				}
 			}
+		}
+	}
+
+	/**
+	 * Add Annotations for desktop.
+	 */
+	public function desktop_alt_tag(){
+		global $post;
+
+		// Get options.
+		$options = get_option( 'emr_settings' );
+		$tablets_redirect            = $options['emr_tablets'];
+		$mobile_to_one_url           = $options['emr_all_select'];
+		$mobile_all_url              = $options['emr_redir_all_url'];
+		$nonstatic_homepage_redirect = $options['emr_front_page'];
+		$nonstatic_redirect_url      = $options['emr_redir_front_url'];
+
+		// Check mobile redirects are enabled.
+		if ( isset( $options['emr_on_off'] ) ) {
+			$emr_enabled = $options['emr_on_off'];
+			if ( $emr_enabled == 'off' ) {
+				return;
+			}
+		}
+
+		// Assign the link rel alternate tag based on user options.
+		if ( $mobile_to_one_url == 'yes' ) {
+			$mobile_rel_link = $mobile_all_url;
+		} 
+		elseif ( $nonstatic_homepage_redirect == 'yes' && is_home() ) {
+			$mobile_rel_link = $nonstatic_redirect_url;
+		}
+		elseif ( ( is_page() || is_single() || is_front_page() ) && ( isset( $this->post_types[ (string) get_post_type( $post ) ] ) ) ) {
+			$data = $this->get_post_data( $post->ID );
+			$mobile_rel_link = $data['url'];
+		}
+
+		// Check to make sure mobile link isn't blank before continuing.
+		if ( $mobile_rel_link == '' )
+			return;
+
+		// Add link rel alternate tag HTML.
+		if ( $tablets_redirect == 'yes' ) {
+			echo '<link rel="alternate" media="only screen and (max-width: 1024px)" href="' . $mobile_rel_link . '">';
+		} else {
+			echo '<link rel="alternate" media="only screen and (max-width: 640px)" href="' . $mobile_rel_link . '">';
 		}
 	}
 
