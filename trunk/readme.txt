@@ -32,29 +32,7 @@ If you use: W3 Total Cache, WP Super Cache, Wordfence, WP Rocket, Hyper Cache, Q
 In the settings you will need to disable caching for the following User Agents: iPhone, iPod, Android, BB10, BlackBerry, webOS, IEMobile/7.0, IEMobile/9.0, IEMobile/10.0, MSIE 10.0, iPad, PlayBook, Xoom , P160U, SCH-I800, Nexus 7, Touch
 
 = Annotations for desktop and mobile URLs =
-To help search engines understand separate mobile URLs tags can be added to the pages to tell crawlers about it. The plugin doesn’t automatically do this on its own right now. For a more in-depth explaination of annotations please see <a href="https://developers.google.com/search/mobile-sites/mobile-seo/separate-urls">Google developers</a>
-
-For example if your page slugs exactly match between the desktop and mobile sites you could use the snippets below to generate the tags but make sure to replace the example.com in the code with your domains before using it.
-
-<code>
-/* Add to desktop site theme functions.php and make sure to replace domain name */
-add_action('wp_head', 'emr_desktop_head_tag');
-function emr_desktop_head_tag(){
-global $post;
-$emr_page_link = wp_make_link_relative(get_permalink( $post->ID ));
-echo '<link rel="alternate" media="only screen and (max-width: 640px)" href="http://m.example.com' . $emr_page_link . '">';
-};
-</code>
-
-<code>
-/* Add to mobile site theme functions.php and make sure to replace domain name */
-add_action('wp_head', 'emr_mobile_head_tag');
-function emr_mobile_head_tag(){
-global $post;
-$emr_page_link = wp_make_link_relative(get_permalink( $post->ID ));
-echo '<link rel="canonical" href="http://example.com' . $emr_page_link . '">';
-};
-</code>
+To help search engines understand separate mobile URLs tags are automatically added to the desktop pages to tell crawlers about it. For a more in-depth explaination of annotations please see <a href="https://developers.google.com/search/mobile-sites/mobile-seo/separate-urls">Google developers</a>
 
 = Known limitations =
 * Some touchscreen devices (eg. Microsoft Surface) are tough to detect as mobile since they can be used in a laptop mode.
@@ -105,11 +83,12 @@ If you want to use this feature set a link to "http://example.com/?view_full_sit
 == Changelog ==
 
 = 4.4 release =
-* New: Added PHPCS
-* New: Code refactoring
+* New: add automatic desktop link rel="alternate" annotations.
+* New: Added PHPCS.
+* New: Code refactoring.
 * Updated: to mobile detect @version 2.8.34
 * Tested: compatibility with WordPress 5.4.2
-* Tested: Cross tested device detection and redirects with BrowserStack
+* Tested: Cross tested device detection and redirects with BrowserStack.
 
 = 4.2 =
 * Added: on or off option on settings page.
