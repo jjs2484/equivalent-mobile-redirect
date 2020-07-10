@@ -36,12 +36,12 @@ class EMR {
 		}
 
 		// This init action should happen after register_post_type calls: priority > 10.
-		add_action( 'init', array( $this, 'init' ), 20 );
+		add_action( 'init', [ $this, 'init' ], 20 );
 
-		add_action( 'plugins_loaded', array( $this, 'activate' ) );
+		add_action( 'plugins_loaded', [ $this, 'activate' ] );
 
 		// Desktop link rel="alternate" annotations.
-		add_action( 'wp_head', 'desktop_alt_tag' );
+		add_action( 'wp_head', [ $this, 'emr_desktop_alt_tag' ] );
 	}
 
 	/**
@@ -237,7 +237,7 @@ class EMR {
 		// Cookie empty then include.
 		if ( empty( $full_site_cookie ) ) {
 			if ( ! class_exists( 'Mobile_Detect' ) ) {
-				require_once 'includes/Mobile_Detect.php';
+				require_once __DIR__ . '/Mobile_Detect.php';
 			}
 			$detect = new Mobile_Detect();
 			// EMR option page settings.
@@ -295,7 +295,7 @@ class EMR {
 	/**
 	 * Add Annotations for desktop.
 	 */
-	public function desktop_alt_tag() {
+	public function emr_desktop_alt_tag() {
 		global $post;
 
 		// Get options.
