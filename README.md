@@ -48,25 +48,21 @@ For example if your page slugs exactly match between the desktop and mobile site
 
 /* Add to desktop site theme functions.php and make sure to replace domain name */
 
-<code>
-add_action('wp_head', 'emr_desktop_head_tag');
+`add_action('wp_head', 'emr_desktop_head_tag');
 function emr_desktop_head_tag(){
 global $post;
 $emr_page_link = wp_make_link_relative(get_permalink( $post->ID ));
 echo '<link rel="alternate" media="only screen and (max-width: 640px)" href="http://m.example.com' . $emr_page_link . '">';
-};
-</code>
+};`
 
 /* Add to mobile site theme functions.php and make sure to replace domain name */
 
-<code>
-add_action('wp_head', 'emr_mobile_head_tag');
+`add_action('wp_head', 'emr_mobile_head_tag');
 function emr_mobile_head_tag(){
 global $post;
 $emr_page_link = wp_make_link_relative(get_permalink( $post->ID ));
 echo '<link rel="canonical" href="http://example.com' . $emr_page_link . '">';
-};
-</code>
+};`
 
 = Known limitations =
 
