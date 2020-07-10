@@ -3,9 +3,12 @@
 Plugin Name: Equivalent Mobile Redirect
 Description: Detect and redirect mobile visitors to the equivalent page on your mobile site.
 Version: 4.4
+Text Domain: emr-redirect
 Author: uniquelylost
 Author URI: https://ndstud.io/
 License: GPL3
+License URI: http://www.gnu.org/licenses/gpl-3.0.txt
+
 */
 
 // Exit if accessed directly.

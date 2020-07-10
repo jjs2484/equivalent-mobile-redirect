@@ -6,7 +6,7 @@ Requires at least: 3.0
 Tested up to: 5.4.2
 Stable tag: 4.4
 License: GPLv3
-License URI: http://www.gnu.org/licenses/gpl-3.0.html
+License URI: http://www.gnu.org/licenses/gpl-3.0.txt
 
 Easy way to detect and redirect mobile visitors to the equivalent page on your mobile site. Optionally redirect all mobile users to one mobile URL.
 
