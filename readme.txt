@@ -84,6 +84,7 @@ If you want to use this feature set a link to "http://example.com/?view_full_sit
 
 = 4.5 release =
 * Fix: broken file path for class-emr.php
+* Tested: compatibility with WordPress 5.5
 
 = 4.4 release =
 * New: add automatic desktop link rel="alternate" annotations.
