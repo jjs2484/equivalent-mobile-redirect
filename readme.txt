@@ -3,8 +3,8 @@
 Contributors: uniquelylost
 Tags: mobile redirect, mobile detect, equivalent, mobile, redirection
 Requires at least: 3.0
-Tested up to: 5.4.2
-Stable tag: 4.4
+Tested up to: 5.5
+Stable tag: 4.5
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.txt
 
@@ -81,6 +81,9 @@ If you want to use this feature set a link to "http://example.com/?view_full_sit
 2. Admin page options
 
 == Changelog ==
+
+= 4.5 release =
+* Fix: broken file path for class-emr.php
 
 = 4.4 release =
 * New: add automatic desktop link rel="alternate" annotations.
