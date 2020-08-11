@@ -237,7 +237,7 @@ class EMR {
 		// Cookie empty then include.
 		if ( empty( $full_site_cookie ) ) {
 			if ( ! class_exists( 'Mobile_Detect' ) ) {
-				require_once __DIR__ . '/Mobile_Detect.php';
+				require_once( dirname(__FILE__) . '/Mobile_Detect.php' );
 			}
 			$detect = new Mobile_Detect();
 			// EMR option page settings.
