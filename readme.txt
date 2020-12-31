@@ -84,6 +84,7 @@ If you want to use this feature set a link to "http://example.com/?view_full_sit
 
 = 4.5 =
 * Fix: better empty check for $mobile_rel_link, $nonstatic_redirect_url, $mobile_all_url variables.
+* Updated: load files with plugin_dir_url.
 * Tested: compatibility with WordPress 5.6
 
 = 4.4 release =
