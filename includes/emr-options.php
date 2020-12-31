@@ -103,7 +103,7 @@ function emr_options_do_page() {
 
 							foreach ( $emr_active as $option ) {
 								$label = $option['label'];
-								if ( $selected == $option['value'] ) { // Make default first in list.
+								if ( $selected == $option['value'] ) {
 									$a = "\n\t<option style=\"padding-right: 10px;\" selected='selected' value='" . esc_attr( $option['value'] ) . "'>$label</option>";
 								} else {
 									$b .= "\n\t<option style=\"padding-right: 10px;\" value='" . esc_attr( $option['value'] ) . "'>$label</option>";
@@ -125,7 +125,7 @@ function emr_options_do_page() {
 
 							foreach ( $emr_redir_tablets as $option ) {
 								$label = $option['label'];
-								if ( $selected == $option['value'] ) { // Make default first in list.
+								if ( $selected == $option['value'] ) {
 									$c = "\n\t<option style=\"padding-right: 10px;\" selected='selected' value='" . esc_attr( $option['value'] ) . "'>$label</option>";
 								} else {
 									$d .= "\n\t<option style=\"padding-right: 10px;\" value='" . esc_attr( $option['value'] ) . "'>$label</option>";
@@ -147,7 +147,7 @@ function emr_options_do_page() {
 
 							foreach ( $emr_redir_all_select as $option ) {
 								$label = $option['label'];
-								if ( $selected == $option['value'] ) { // Make default first in list.
+								if ( $selected == $option['value'] ) {
 									$e = "\n\t<option style=\"padding-right: 10px;\" selected='selected' value='" . esc_attr( $option['value'] ) . "'>$label</option>";
 								} else {
 									$f .= "\n\t<option style=\"padding-right: 10px;\" value='" . esc_attr( $option['value'] ) . "'>$label</option>";
@@ -176,7 +176,7 @@ function emr_options_do_page() {
 
 							foreach ( $emr_redir_front_page as $option ) {
 								$label = $option['label'];
-								if ( $selected == $option['value'] ) { // Make default first in list.
+								if ( $selected == $option['value'] ) {
 									$g = "\n\t<option style=\"padding-right: 10px;\" selected='selected' value='" . esc_attr( $option['value'] ) . "'>$label</option>";
 								} else {
 									$h .= "\n\t<option style=\"padding-right: 10px;\" value='" . esc_attr( $option['value'] ) . "'>$label</option>";
