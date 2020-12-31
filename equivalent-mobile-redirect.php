@@ -15,7 +15,7 @@
 defined( 'ABSPATH' ) || exit;
 
 // Admin panel.
-require_once 'includes/emr-options.php';
+require_once plugin_dir_url( __FILE__ ) . 'includes/emr-options.php';
 
 // Equivalent mobile redirect class.
-require_once 'includes/class-emr.php';
+require_once plugin_dir_url( __FILE__ ) . 'includes/class-emr.php';
