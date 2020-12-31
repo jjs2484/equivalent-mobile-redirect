@@ -257,7 +257,7 @@ class EMR {
 			if ( $detect->isMobile() && $mobile_to_one_url == 'yes' ) {
 				if ( $detect->isTablet() && $tablets_redirect == 'no' ) {
 					$detect = 'false';
-				} elseif ( $mobile_all_url != '' ) {
+				} elseif ( ! empty( $mobile_all_url ) ) {
 					// Redirect all and quit.
 					wp_redirect( $mobile_all_url, 302 );
 					exit;
@@ -265,7 +265,7 @@ class EMR {
 			} elseif ( $detect->isMobile() && $nonstatic_homepage_redirect == 'yes' && is_home() ) {
 				if ( $detect->isTablet() && $tablets_redirect == 'no' ) {
 					$detect = 'false';
-				} elseif ( $nonstatic_redirect_url != '' ) {
+				} elseif ( ! empty( $nonstatic_redirect_url ) ) {
 					wp_redirect( $nonstatic_redirect_url, 302 );
 					exit;
 				}

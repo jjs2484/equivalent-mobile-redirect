@@ -83,7 +83,7 @@ If you want to use this feature set a link to "http://example.com/?view_full_sit
 == Changelog ==
 
 = 4.5 =
-* Fix: better check for $mobile_rel_link variable.
+* Fix: better empty check for $mobile_rel_link, $nonstatic_redirect_url, $mobile_all_url variables.
 * Tested: compatibility with WordPress 5.6
 
 = 4.4 release =
