@@ -97,7 +97,7 @@ function emr_options_do_page() {
 					<td>
 						<select name="emr_settings[emr_on_off]">
 							<?php
-							$selected = $options['emr_on_off'];
+							$selected = isset( $options['emr_on_off'] ) ? $options['emr_on_off'] : 'on';
 							$a        = '';
 							$b        = '';
 
@@ -119,7 +119,7 @@ function emr_options_do_page() {
 					<td>
 						<select name="emr_settings[emr_tablets]">
 							<?php
-							$selected = $options['emr_tablets'];
+							$selected = isset( $options['emr_tablets'] ) ? $options['emr_tablets'] : 'yes';
 							$c        = '';
 							$d        = '';
 
@@ -141,7 +141,7 @@ function emr_options_do_page() {
 					<td>
 						<select name="emr_settings[emr_all_select]">
 							<?php
-							$selected = $options['emr_all_select'];
+							$selected = isset( $options['emr_all_select'] ) ? $options['emr_all_select'] : 'no';
 							$e        = '';
 							$f        = '';
 
@@ -161,7 +161,7 @@ function emr_options_do_page() {
 
 				<tr valign="top"><th scope="row"><?php esc_html_e( 'Redirect All Mobile to URL', 'emr-redirect' ); ?></th>
 					<td>
-						<input id="emr_settings[emr_redir_all_url]" class="regular-text" type="text" name="emr_settings[emr_redir_all_url]" value="<?php echo esc_attr( $options['emr_redir_all_url'] ); ?>" placeholder="https://google.com" />
+						<input id="emr_settings[emr_redir_all_url]" class="regular-text" type="text" name="emr_settings[emr_redir_all_url]" value="<?php echo esc_attr( isset( $options['emr_redir_all_url'] ) ? $options['emr_redir_all_url'] : '' ); ?>" placeholder="https://google.com" />
 						<br><label class="description" for="emr_settings[emr_redir_all_url]"><?php esc_html_e( 'Enter URL to redirect all mobile to ex. http://google.com', 'emr-redirect' ); ?></label>
 					</td>
 				</tr>
@@ -170,7 +170,7 @@ function emr_options_do_page() {
 					<td>
 						<select name="emr_settings[emr_front_page]">
 							<?php
-							$selected = $options['emr_front_page'];
+							$selected = isset( $options['emr_front_page'] ) ? $options['emr_front_page'] : 'no';
 							$g        = '';
 							$h        = '';
 
@@ -190,7 +190,7 @@ function emr_options_do_page() {
 
 				<tr valign="top"><th scope="row"><?php esc_html_e( 'Redirect non-static homepage to what URL', 'emr-redirect' ); ?></th>
 					<td>
-						<input id="emr_settings[emr_redir_front_url]" class="regular-text" type="text" name="emr_settings[emr_redir_front_url]" value="<?php echo esc_attr( $options['emr_redir_front_url'] ); ?>" placeholder="https://google.com" />
+						<input id="emr_settings[emr_redir_front_url]" class="regular-text" type="text" name="emr_settings[emr_redir_front_url]" value="<?php echo esc_attr( isset( $options['emr_redir_front_url'] ) ? $options['emr_redir_front_url'] : '' ); ?>" placeholder="https://google.com" />
 						<br><label class="description" for="emr_settings[emr_redir_front_url]"><?php esc_html_e( 'Enter URL to redirect the non-static homepage to ex. http://google.com', 'emr-redirect' ); ?></label>
 					</td>
 				</tr>

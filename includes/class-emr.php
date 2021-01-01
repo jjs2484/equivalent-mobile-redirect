@@ -237,22 +237,22 @@ class EMR {
 		// Cookie empty then include.
 		if ( empty( $full_site_cookie ) ) {
 			if ( ! class_exists( 'Mobile_Detect' ) ) {
-				require_once plugin_dir_url( __FILE__ ) . 'Mobile_Detect.php';
+				require_once plugin_dir_path( __FILE__ ) . 'Mobile_Detect.php';
 			}
 			$detect = new Mobile_Detect();
 			// EMR option page settings.
 			$options = get_option( 'emr_settings' );
-			if ( isset( $options['emr_on_off'] ) ) {
-				$emr_enabled = $options['emr_on_off'];
-				if ( $emr_enabled == 'off' ) {
-					return;
-				}
+
+			$emr_enabled = isset( $options['emr_on_off'] ) ? $options['emr_on_off'] : 'on';
+			if ( $emr_enabled == 'off' ) {
+				return;
 			}
-			$tablets_redirect            = $options['emr_tablets'];
-			$mobile_to_one_url           = $options['emr_all_select'];
-			$mobile_all_url              = $options['emr_redir_all_url'];
-			$nonstatic_homepage_redirect = $options['emr_front_page'];
-			$nonstatic_redirect_url      = $options['emr_redir_front_url'];
+
+			$tablets_redirect            = isset( $options['emr_tablets'] ) ? $options['emr_tablets'] : 'yes';
+			$mobile_to_one_url           = isset( $options['emr_all_select'] ) ? $options['emr_all_select'] : 'no';
+			$mobile_all_url              = isset( $options['emr_redir_all_url'] ) ? $options['emr_redir_all_url'] : '';
+			$nonstatic_homepage_redirect = isset( $options['emr_front_page'] ) ? $options['emr_front_page'] : 'no';
+			$nonstatic_redirect_url      = isset( $options['emr_redir_front_url'] ) ? $options['emr_redir_front_url'] : '';
 
 			if ( $detect->isMobile() && $mobile_to_one_url == 'yes' ) {
 				if ( $detect->isTablet() && $tablets_redirect == 'no' ) {
@@ -300,18 +300,16 @@ class EMR {
 
 		// Get options.
 		$options                     = get_option( 'emr_settings' );
-		$tablets_redirect            = $options['emr_tablets'];
-		$mobile_to_one_url           = $options['emr_all_select'];
-		$mobile_all_url              = $options['emr_redir_all_url'];
-		$nonstatic_homepage_redirect = $options['emr_front_page'];
-		$nonstatic_redirect_url      = $options['emr_redir_front_url'];
+		$tablets_redirect            = isset( $options['emr_tablets'] ) ? $options['emr_tablets'] : 'yes';
+		$mobile_to_one_url           = isset( $options['emr_all_select'] ) ? $options['emr_all_select'] : 'no';
+		$mobile_all_url              = isset( $options['emr_redir_all_url'] ) ? $options['emr_redir_all_url'] : '';
+		$nonstatic_homepage_redirect = isset( $options['emr_front_page'] ) ? $options['emr_front_page'] : 'no';
+		$nonstatic_redirect_url      = isset( $options['emr_redir_front_url'] ) ? $options['emr_redir_front_url'] : '';
 
 		// Check mobile redirects are enabled.
-		if ( isset( $options['emr_on_off'] ) ) {
-			$emr_enabled = $options['emr_on_off'];
-			if ( $emr_enabled == 'off' ) {
-				return;
-			}
+		$emr_enabled = isset( $options['emr_on_off'] ) ? $options['emr_on_off'] : 'on';
+		if ( $emr_enabled == 'off' ) {
+			return;
 		}
 
 		// Assign the link rel alternate tag based on user options.
@@ -321,7 +319,7 @@ class EMR {
 			$mobile_rel_link = $nonstatic_redirect_url;
 		} elseif ( ( is_page() || is_single() || is_front_page() ) && ( isset( $this->post_types[ (string) get_post_type( $post ) ] ) ) ) {
 			$data            = $this->get_post_data( $post->ID );
-			$mobile_rel_link = $data['url'];
+			$mobile_rel_link = isset( $data['url'] ) ? $data['url'] : '';
 		}
 
 		// Check to make sure mobile link isn't blank before continuing.
