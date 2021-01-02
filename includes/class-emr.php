@@ -214,6 +214,15 @@ class EMR {
 	public function template_redirect() {
 		global $post;
 
+		// Get all EMR options.
+		$options = get_option( 'emr_settings' );
+
+		// If EMR is off return.
+		$emr_enabled = isset( $options['emr_on_off'] ) ? $options['emr_on_off'] : 'on';
+		if ( $emr_enabled == 'off' ) {
+			return;
+		}
+
 		// Let's see if we should set the full site cookie.
 		if ( isset( $_GET['view_full_site'] ) ) {
 			$get_cookie_check = $_GET['view_full_site'];
@@ -244,14 +253,8 @@ class EMR {
 				require_once plugin_dir_path( __FILE__ ) . 'Mobile_Detect.php';
 			}
 			$detect = new Mobile_Detect();
-			// EMR option page settings.
-			$options = get_option( 'emr_settings' );
 
-			$emr_enabled = isset( $options['emr_on_off'] ) ? $options['emr_on_off'] : 'on';
-			if ( $emr_enabled == 'off' ) {
-				return;
-			}
-
+			// EMR settings.
 			$tablets_redirect            = isset( $options['emr_tablets'] ) ? $options['emr_tablets'] : 'yes';
 			$mobile_to_one_url           = isset( $options['emr_all_select'] ) ? $options['emr_all_select'] : 'no';
 			$mobile_all_url              = isset( $options['emr_redir_all_url'] ) ? $options['emr_redir_all_url'] : '';
@@ -260,22 +263,22 @@ class EMR {
 
 			if ( $detect->isMobile() && $mobile_to_one_url == 'yes' ) {
 				if ( $detect->isTablet() && $tablets_redirect == 'no' ) {
-					$detect = 'false';
-				} elseif ( ! empty( $mobile_all_url ) ) {
+					return;
+				} elseif ( ! empty( $mobile_all_url ) && filter_var( $mobile_all_url, FILTER_VALIDATE_URL ) ) {
 					// Redirect all and quit.
 					wp_redirect( $mobile_all_url, 302 );
 					exit;
 				}
 			} elseif ( $detect->isMobile() && $nonstatic_homepage_redirect == 'yes' && is_home() ) {
 				if ( $detect->isTablet() && $tablets_redirect == 'no' ) {
-					$detect = 'false';
-				} elseif ( ! empty( $nonstatic_redirect_url ) ) {
+					return;
+				} elseif ( ! empty( $nonstatic_redirect_url ) && filter_var( $nonstatic_redirect_url, FILTER_VALIDATE_URL ) ) {
 					wp_redirect( $nonstatic_redirect_url, 302 );
 					exit;
 				}
 			} elseif ( $detect->isMobile() ) {
 				if ( $detect->isTablet() && $tablets_redirect == 'no' ) {
-					$detect = 'false';
+					return;
 				} else {
 					// Finally do the regular mobile redirect and quit.
 					// Redirects only apply to pages or single posts.
