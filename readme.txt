@@ -84,6 +84,7 @@ If you want to use this feature set a link to "http://example.com/?view_full_sit
 
 = 4.6 =
 Updated: Add version_compare to remap old data if less than v4.1.
+Updated: Validate settings page URLs with FILTER_VALIDATE_URL before redirecting.
 
 = 4.5 =
 * Fix: Better empty check for $mobile_rel_link, $nonstatic_redirect_url, $mobile_all_url variables.
