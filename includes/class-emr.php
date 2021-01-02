@@ -9,7 +9,7 @@ class EMR {
 	 *
 	 * @const string
 	 */
-	const VERSION = '4.5';
+	const VERSION = '4.6';
 
 	/**
 	 * List of post types for which to enable this plugin.

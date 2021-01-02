@@ -4,7 +4,7 @@ Contributors: uniquelylost
 Tags: mobile redirect, mobile detect, equivalent, mobile, redirection
 Requires at least: 3.0
 Tested up to: 5.6
-Stable tag: 4.5
+Stable tag: 4.6
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.txt
 
@@ -82,6 +82,9 @@ If you want to use this feature set a link to "http://example.com/?view_full_sit
 
 == Changelog ==
 
+= 4.6 =
+Updated: Add version_compare to remap old data if less than v4.1.
+
 = 4.5 =
 * Fix: Better empty check for $mobile_rel_link, $nonstatic_redirect_url, $mobile_all_url variables.
 * Fix: PHP 7.4 compatibility.
@@ -89,7 +92,7 @@ If you want to use this feature set a link to "http://example.com/?view_full_sit
 * Updated: Load files with plugin_dir_path.
 * Tested: Compatibility with WordPress 5.6
 
-= 4.4 release =
+= 4.4 =
 * New: add automatic desktop link rel="alternate" annotations.
 * New: Added PHPCS.
 * New: Code refactoring.
