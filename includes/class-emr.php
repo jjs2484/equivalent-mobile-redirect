@@ -30,18 +30,30 @@ class EMR {
 	 * Constructor.
 	 */
 	public function __construct() {
+
 		// Run update routine if needed, also upon activation.
 		if ( version_compare( self::VERSION, get_option( 'ndg_spr_version', 0 ), '>' ) ) {
 			$this->update();
 		}
 
+		// Remap old data if less than v4.1.
+		if ( version_compare( '4.1', get_option( 'ndg_spr_version', 0 ), '>' ) ) {
+			add_action( 'plugins_loaded', [ $this, 'activate' ] );
+		}
+
 		// This init action should happen after register_post_type calls: priority > 10.
 		add_action( 'init', [ $this, 'init' ], 20 );
 
-		add_action( 'plugins_loaded', [ $this, 'activate' ] );
-
 		// Desktop link rel="alternate" annotations.
 		add_action( 'wp_head', [ $this, 'emr_desktop_alt_tag' ] );
+	}
+
+	/**
+	 * Update the plugin to a newer version.
+	 */
+	public function update() {
+		// Store version of the installed plugin for future updates.
+		update_option( 'ndg_spr_version', self::VERSION );
 	}
 
 	/**
@@ -64,14 +76,6 @@ class EMR {
 		];
 		update_option( 'emr_settings', $new_options );
 		delete_option( 'rooter2484_theme_options' );
-	}
-
-	/**
-	 * Update the plugin to a newer version.
-	 */
-	public function update() {
-		// Store version of the installed plugin for future updates.
-		update_option( 'ndg_spr_version', self::VERSION );
 	}
 
 	/**
