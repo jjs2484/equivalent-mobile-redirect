@@ -5,7 +5,7 @@
  * Version: 4.6
  * Author: uniquelylost
  * Author URI: https://ndstud.io/
- * Text Domain: emr-redirect
+ * Text Domain: equivalent-mobile-redirect
  * Requires at least: 3.0
  * License: GPL3
  * License URI: http://www.gnu.org/licenses/gpl-3.0.txt
