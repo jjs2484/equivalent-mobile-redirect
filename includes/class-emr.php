@@ -127,7 +127,7 @@ class EMR {
 	public function add_meta_boxes() {
 		// Add meta box for each post type.
 		foreach ( $this->post_types as $post_type ) {
-			add_meta_box( 'ndg_page_redirect', __( 'Mobile Redirect', 'emr-redirect' ), array( $this, 'meta_box_show' ), $post_type );
+			add_meta_box( 'ndg_page_redirect', __( 'Mobile Redirect', 'equivalent-mobile-redirect' ), array( $this, 'meta_box_show' ), $post_type );
 		}
 	}
 
@@ -154,7 +154,7 @@ class EMR {
 
 		// Output the URL field.
 		echo '<p>';
-		echo '<label for="ndg_spr_url">' . esc_html__( 'Mobile URL:', 'emr-redirect' ) . '</label> ';
+		echo '<label for="ndg_spr_url">' . esc_html__( 'Mobile URL:', 'equivalent-mobile-redirect' ) . '</label> ';
 		echo '<input id="ndg_spr_url" name="ndg_spr_url" type="url" value="' . esc_url( $values['url_raw'] ) . '" size="50" style="width:80%" placeholder="https://google.com">';
 		echo '</p>';
 	}
